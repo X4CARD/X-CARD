@@ -8,9 +8,6 @@
   <!-- Include Font Awesome CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    audio {
-      display: none;
-    }
     body {
       margin: 0;
       padding: 0;
@@ -21,31 +18,46 @@
       background-color: #050505;
       overflow: hidden;
     }
-    .launch-button {
-  /* Add responsive width and padding */
-  width: 80%; /* Adjust as needed */
-  padding: 10px; /* Adjust as needed */
-}
 
-#background-video {
-  /* Add responsive max-width and max-height */
-  max-width: 100%;
-  max-height: 100%;
-}
-    /* Style the rocket icon */
-    .fa-rocket {
-      margin-right: 10px; /* Add some spacing between the icon and text */
+    .launch-button {
+      background-color: #000305;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
     }
-    @keyframes explode {
-      0% {
-        opacity: 1;
-        transform: translate(0, 0) scale(1);
-      }
-      100% {
-        opacity: 0;
-        transform: translate(var(--tx, 0), var(--ty, 0)) scale(0.5);
+
+    .launch-button i {
+      margin-right: 10px;
+    }
+
+    video#background-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    audio {
+      display: none;
+    }
+
+    /* Add responsive styles */
+    @media screen and (max-width: 768px) {
+      .launch-button {
+        font-size: 16px;
+        padding: 10px 20px;
       }
     }
+
     @keyframes glowing {
       0%, 100% {
         box-shadow: 0 0 10px rgba(52, 152, 219, 0.8);
@@ -57,7 +69,7 @@
   </style>
 </head>
 <body>
-  <video autoplay muted loop id="background-video" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+  <video autoplay muted loop id="background-video">
     <source src="S.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
@@ -65,9 +77,7 @@
     <source src="N.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
-  <!-- Replace the button with a link to your main site -->
-  <a href="  <a href="X4CARD/X-CARD/login.html" class="launch-button">
-" class="launch-button">
+  <a href="X4CARD/X-CARD/login.html" class="launch-button">
     <i class="fas fa-rocket"></i> Launch Site
   </a>
 
@@ -83,6 +93,7 @@
       piece.style.setProperty('--ty', ty);
       document.body.appendChild(piece);
     }
+
     const explodeButton = document.querySelector('.launch-button');
 
     explodeButton.addEventListener('click', (event) => {
